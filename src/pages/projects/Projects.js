@@ -1,12 +1,24 @@
-import { Box, Card, Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Sidenav from "../../components/Sidenav";
-import { Image } from "@mui/icons-material";
+import "./Projects.css";
 
 const ProjectsData = [
+  {
+    title: "Predict Math - Solo Project",
+    img: "/PredictMath.png",
+    date: "2023 Mar",
+    href: "https://www.predict-math.web.app",
+    points: [
+      "Successfully built a Computer Vision model that predicts mathematical family of equations.",
+      "Built a front-end web app that allow people two input data.",
+      "Connected database and server for the ML infrastructure.",
+    ],
+  },
   {
     title: "Easily Poll Students - Back-end Engineer",
     img: "/EasilyPollStudents.png",
     date: "2023 Mar",
+    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
     points: [
       "Implemented one click authorization solution for firctionless user experience.",
       "Secured database access by developing custom GraphQL authentication rules for DynamoDB.",
@@ -18,7 +30,7 @@ export default function Projects() {
   return (
     <Box>
       <Sidenav />
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ mt: "5vh" }}>
         {ProjectsData.map((val, key) => (
           <Project key={key} props={val} />
         ))}
@@ -51,12 +63,9 @@ function Project({ props }) {
           justifyContent: "space-around",
         }}
       >
-        <img
-          src={props.img}
-          width="400px"
-          height="200px"
-          style={{ objectFit: "cover", hover: {} }}
-        />
+        <a href={props.href} className="image-container">
+          <img src={props.img} />
+        </a>
       </div>
       <ul style={{ padding: "1rem" }}>
         {props.points.map((val, key) => (
