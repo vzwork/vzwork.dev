@@ -6,12 +6,27 @@ import SmartToyIcon from "@mui/icons-material/SmartToy";
 import MailIcon from "@mui/icons-material/Mail";
 import CheckIcon from "@mui/icons-material/Check";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Sidenav from "../../components/Sidenav";
 
 const posts = [
   {
+    title: "AI research",
+    date: "2023/09/22",
+    content:
+      "Developed a full-stack ML application. Developed front-end with react where you generate input. Connected it to database. Built a python server that performs ML analysis. Finally the model output is diplayed on the website.",
+  },
+  {
+    title: "AI research",
+    date: "2023/09/09",
+    content:
+      "Finished my research on patern recognition. Generated data using linear, quadratic, cubic, sinusoidal relations. Train ResNet50 to classifiy mathemtaical relation.",
+  },
+  {
     title: "Personal Website",
     date: "2023/08/30",
-    content: "Hosted the website, added backend. Added pages for: projects, contact, error.",
+    content:
+      "Hosted the website, added backend. Added pages for: projects, contact, error.",
   },
   {
     title: "Personal Website",
@@ -22,42 +37,11 @@ const posts = [
 ];
 
 export default function Landing() {
+  const nav = useNavigate();
+
   return (
     <Box>
-      <Box
-        sx={{
-          position: "fixed",
-          right: "calc(50vw - min(50vw, calc(480px + 5vw)))",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          bgcolor="sidenav.bg"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            borderRadius: "1rem",
-          }}
-        >
-          <IconButton area-label="up" color="sidenav">
-            <KeyboardArrowUpIcon />
-          </IconButton>
-          <IconButton area-label="home" color="sidenav">
-            <HomeIcon />
-          </IconButton>
-          <IconButton area-label="data-science" color="sidenav">
-            <SmartToyIcon />
-          </IconButton>
-          <IconButton area-label="contact" color="sidenav">
-            <MailIcon />
-          </IconButton>
-          <IconButton area-label="down" color="sidenav">
-            <KeyboardArrowDownIcon />
-          </IconButton>
-        </Box>
-      </Box>
+      <Sidenav />
       <Container maxWidth="md">
         <Grid
           container
@@ -103,7 +87,7 @@ export default function Landing() {
             <Box pl={2}>
               <ul>
                 <li>
-                  BAS in Application Development <CheckIcon fontSize="1rem" />
+                  BS in Computer Science <CheckIcon fontSize="1rem" />
                 </li>
                 <li>
                   DS + ML bootcamp <CheckIcon fontSize="1rem" />
@@ -140,6 +124,9 @@ export default function Landing() {
           >
             <Stack direction="row" spacing={0.5}>
               <Button
+                onClick={() => {
+                  nav("/");
+                }}
                 area-label="home"
                 color="sidenav"
                 variant="outlined"
@@ -149,6 +136,9 @@ export default function Landing() {
                 home
               </Button>
               <Button
+                onClick={() => {
+                  nav("/projects");
+                }}
                 area-label="data-science"
                 color="sidenav"
                 variant="outlined"
@@ -158,6 +148,9 @@ export default function Landing() {
                 projects
               </Button>
               <Button
+                onClick={() => {
+                  nav("/contact");
+                }}
                 area-label="contact"
                 color="sidenav"
                 variant="outlined"
