@@ -1,18 +1,22 @@
-import { useNavigate, useNavigation } from "react-router-dom";
 import { Box, IconButton } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import HomeIcon from "@mui/icons-material/Home";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import MailIcon from "@mui/icons-material/Mail";
+import { useContext } from "react";
+import { PageLocationContext } from "../contexts/PageLocationContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidenav() {
   const nav = useNavigate();
+  const pageLocationContext = useContext(PageLocationContext);
 
   return (
     <Box
       sx={{
         position: "fixed",
+        top: "0",
         right: "calc(50vw - min(50vw, calc(480px + 5vw)))",
         height: "100vh",
         display: "flex",
@@ -27,7 +31,13 @@ export default function Sidenav() {
           borderRadius: "1rem",
         }}
       >
-        <IconButton area-label="up" color="sidenav">
+        <IconButton
+          area-label="up"
+          color="sidenav"
+          onClick={() => {
+            pageLocationContext.clickUp();
+          }}
+        >
           <KeyboardArrowUpIcon />
         </IconButton>
         <IconButton
@@ -51,13 +61,17 @@ export default function Sidenav() {
         <IconButton
           area-label="contact"
           color="sidenav"
-          onClick={() => {
-            nav("/contact");
-          }}
+          href="https://www.linkedin.com/in/vzwork"
         >
           <MailIcon />
         </IconButton>
-        <IconButton area-label="down" color="sidenav">
+        <IconButton
+          area-label="down"
+          color="sidenav"
+          onClick={() => {
+            pageLocationContext.clickDown();
+          }}
+        >
           <KeyboardArrowDownIcon />
         </IconButton>
       </Box>

@@ -11,6 +11,11 @@ import Sidenav from "../../components/Sidenav";
 
 const posts = [
   {
+    title: "Personal Website",
+    date: "2023/10/03",
+    content: "Added scroll functionality.",
+  },
+  {
     title: "AI research",
     date: "2023/09/22",
     content:
@@ -69,7 +74,9 @@ export default function Landing() {
                 width="200px"
                 style={{ borderRadius: "1rem" }}
               />
-              <Box>Vladislav Zakharov</Box>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                Vladislav Zakharov
+              </Box>
             </Box>
           </Grid>
           <Grid
@@ -111,7 +118,7 @@ export default function Landing() {
                 <LoadingDots delay />
               </p>
               <p>
-                Building GAI
+                Building AGI
                 <LoadingDots />
               </p>
             </Box>
@@ -125,18 +132,6 @@ export default function Landing() {
             <Stack direction="row" spacing={0.5}>
               <Button
                 onClick={() => {
-                  nav("/");
-                }}
-                area-label="home"
-                color="sidenav"
-                variant="outlined"
-                size="small"
-                startIcon={<HomeIcon />}
-              >
-                home
-              </Button>
-              <Button
-                onClick={() => {
                   nav("/projects");
                 }}
                 area-label="data-science"
@@ -148,16 +143,14 @@ export default function Landing() {
                 projects
               </Button>
               <Button
-                onClick={() => {
-                  nav("/contact");
-                }}
+                href="https://www.linkedin.com/in/vzwork"
                 area-label="contact"
                 color="sidenav"
                 variant="outlined"
                 size="small"
                 startIcon={<MailIcon />}
               >
-                link
+                contact
               </Button>
             </Stack>
           </Grid>

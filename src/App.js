@@ -1,25 +1,8 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./pages/landing/Landing";
-import Error from "./pages/error/Error";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Sidenav from "./components/Sidenav";
-import Projects from "./pages/projects/Projects";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Landing />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/*",
-    element: <Error />,
-  },
-]);
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { PageLocationContextProvider } from "./contexts/PageLocationContext";
+import MyRouter from "./Router";
 
 const theme = createTheme({
   palette: {
@@ -41,7 +24,9 @@ function App() {
         <div className="slider-thumb" />
       </div>
       <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
+        <PageLocationContextProvider>
+          <MyRouter />
+        </PageLocationContextProvider>
       </ThemeProvider>
     </div>
   );
