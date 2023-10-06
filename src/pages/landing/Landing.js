@@ -1,214 +1,179 @@
-import { Box, Button, Container, Grid, IconButton, Stack } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import HomeIcon from "@mui/icons-material/Home";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import MailIcon from "@mui/icons-material/Mail";
-import CheckIcon from "@mui/icons-material/Check";
-import { useState, useEffect } from "react";
+import { Box, Button, Container } from "@mui/material";
+import { useContext } from "react";
+import { PageContext } from "../../contexts/PageContext/PageContext";
+import BackgroundAnimation from "../../components/BackgroundAnimation/BackgroundAnimation";
 import { useNavigate } from "react-router-dom";
-import Sidenav from "../../components/Sidenav";
+import { ThemeContext } from "../../contexts/ThemeContext/ThemeContext";
 
-const posts = [
-  {
-    title: "Personal Website",
-    date: "2023/10/03",
-    content: "Added scroll functionality.",
-  },
-  {
-    title: "AI research",
-    date: "2023/09/22",
-    content:
-      "Developed a full-stack ML application. Developed front-end with react where you generate input. Connected it to database. Built a python server that performs ML analysis. Finally the model output is diplayed on the website.",
-  },
-  {
-    title: "AI research",
-    date: "2023/09/09",
-    content:
-      "Finished my research on patern recognition. Generated data using linear, quadratic, cubic, sinusoidal relations. Train ResNet50 to classifiy mathemtaical relation.",
-  },
-  {
-    title: "Personal Website",
-    date: "2023/08/30",
-    content:
-      "Hosted the website, added backend. Added pages for: projects, contact, error.",
-  },
-  {
-    title: "Personal Website",
-    date: "2023/08/29",
-    content:
-      "I have sumbled up on the styling I like. Developed landing page..",
-  },
-];
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import SsidChartIcon from "@mui/icons-material/SsidChart";
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
+import BiotechIcon from "@mui/icons-material/Biotech";
+
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default function Landing() {
   const nav = useNavigate();
+  const pageContext = useContext(PageContext);
+  const themeContext = useContext(ThemeContext);
 
   return (
     <Box>
-      <Sidenav />
-      <Container maxWidth="md">
-        <Grid
-          container
-          bgcolor={"background.main"}
+      <BackgroundAnimation />
+      <Box
+        bgcolor="bg.clear"
+        sx={{
+          marginTop: "30vh",
+          width: "100vw",
+        }}
+      >
+        <Container>
+          <Box sx={{ display: "flex" }}>
+            <img
+              src="Vlad.jpg"
+              width="120px"
+              height="120px"
+              style={{
+                borderRadius: "50%",
+                border: "solid 3px #ccc",
+                margin: "-60px 1rem",
+              }}
+            />
+            <Box sx={{ fontSize: "1.2rem", padding: "2rem 0" }}>
+              Vladislav Zakharov
+            </Box>
+          </Box>
+        </Container>
+
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "1rem" }}
+        >
+          My progress in the following areas:
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            startIcon={<SmartToyIcon />}
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              await pageContext.animateIn();
+              nav("/agi");
+              await pageContext.animateOut();
+            }}
+          >
+            AGI
+          </Button>
+          <Box p={0.5}></Box>
+          <Button
+            startIcon={<SsidChartIcon />}
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              await pageContext.animateIn();
+              nav("/ds");
+              await pageContext.animateOut();
+            }}
+          >
+            DS
+          </Button>
+          <Box p={0.5}></Box>
+          <Button
+            startIcon={<CorporateFareIcon />}
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              await pageContext.animateIn();
+              nav("/de");
+              await pageContext.animateOut();
+            }}
+          >
+            DE
+          </Button>
+          <Box p={0.5}></Box>
+          <Button
+            startIcon={<BiotechIcon />}
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              await pageContext.animateIn();
+              nav("/cs");
+              await pageContext.animateOut();
+            }}
+          >
+            CS
+          </Button>
+        </Box>
+        <Box sx={{ height: "2rem" }} />
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "1rem" }}
+        >
+          My github history:
+        </Box>
+        <Box
           sx={{
-            borderRadius: "1rem",
-            padding: "1rem",
-            mt: "5vh",
-            border: "1px solid #888",
+            display: "flex",
+            justifyContent: "center",
+            margin: "0 1rem",
           }}
         >
-          <Grid
-            sm={6}
-            xs={12}
+          <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
+              overflowX: "auto",
+              direction: "rtl",
             }}
-            item
           >
-            <Box>
-              <img
-                src="Vlad.jpg"
-                width="200px"
-                style={{ borderRadius: "1rem" }}
-              />
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                Vladislav Zakharov
-              </Box>
-            </Box>
-          </Grid>
-          <Grid
-            sm={6}
-            pt={4}
-            pr={2}
-            xs={12}
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-            item
-          >
-            <Box pl={2}>
-              <ul>
-                <li>
-                  BS in Computer Science <CheckIcon fontSize="1rem" />
-                </li>
-                <li>
-                  DS + ML bootcamp <CheckIcon fontSize="1rem" />
-                </li>
-                <li>
-                  Full-stack Intern{" "}
-                  <a href="https://www.speedy.legal" style={{ color: "white" }}>
-                    Speedy Legal
-                  </a>
-                </li>
-                <li>
-                  Front-end Intern{" "}
-                  <a href="https://www.floopedu.com" style={{ color: "white" }}>
-                    Floop
-                  </a>
-                </li>
-              </ul>
-              <br />
-              <p>
-                Applying to jobs
-                <LoadingDots delay />
-              </p>
-              <p>
-                Building AGI
-                <LoadingDots />
-              </p>
-            </Box>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            mt={2}
-            sx={{ display: "flex", justifyContent: "space-around" }}
-          >
-            <Stack direction="row" spacing={0.5}>
-              <Button
-                onClick={() => {
-                  nav("/projects");
-                }}
-                area-label="data-science"
-                color="sidenav"
-                variant="outlined"
-                size="small"
-                startIcon={<SmartToyIcon />}
-              >
-                projects
-              </Button>
-              <Button
-                href="https://www.linkedin.com/in/vzwork"
-                area-label="contact"
-                color="sidenav"
-                variant="outlined"
-                size="small"
-                startIcon={<MailIcon />}
-              >
-                contact
-              </Button>
-            </Stack>
-          </Grid>
-        </Grid>
-        <Box mt={4}>
-          {posts.map((props, index) => (
-            <Post props={props} key={index} />
-          ))}
+            <a href="https://www.github.com/vzwork">
+              {themeContext.darkMode ? (
+                <img
+                  src="https://ghchart.rshah.org/f7561b/vzwork"
+                  alt="vzwork Github chart"
+                />
+              ) : (
+                <img
+                  src="https://ghchart.rshah.org/17bd08/vzwork"
+                  alt="vzwork Github chart"
+                />
+              )}
+            </a>
+          </Box>
         </Box>
-      </Container>
-    </Box>
-  );
-}
-
-function Post({ props }) {
-  return (
-    <Box
-      px={2}
-      py={1}
-      mt={1}
-      bgcolor={"background.secondary"}
-      sx={{
-        borderRadius: "1rem",
-        padding: "1rem",
-        border: "1px solid #888",
-      }}
-    >
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <h2>{props.title}</h2>
-        <p style={{ fontSize: "0.8rem" }}>{props.date}</p>
+        <Box sx={{ height: "2rem" }} />
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "1rem" }}
+        >
+          Contact me:
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            href="https://www.linkedin.com/in/vzwork"
+            startIcon={<LinkedInIcon />}
+            variant="outlined"
+            color="secondary"
+            sx={{ width: "300px" }}
+          >
+            LinkedIn
+          </Button>
+          <Box sx={{ height: "0.5rem" }} />
+          <Button
+            href="mailto:vladislav.zakharov.work@gmail.com?subject=Portfolio Impression"
+            startIcon={<EmailIcon />}
+            variant="outlined"
+            color="secondary"
+            sx={{ width: "300px" }}
+          >
+            email
+          </Button>
+        </Box>
+        <Box sx={{ height: "5rem" }} />
       </Box>
-      {props.content}
+      <Box sx={{ height: "5rem" }} />
     </Box>
-  );
-}
-
-function LoadingDots(props) {
-  const [count, setCount] = useState(0);
-  const [delay, setDelay] = useState(true);
-
-  useEffect(() => {
-    if (delay && props.delay) {
-      setTimeout(() => {
-        setCount((count + 1) % 4);
-      }, 500);
-      setDelay(!delay);
-    } else {
-      setTimeout(() => {
-        setCount((count + 1) % 4);
-      }, 1000);
-    }
-  });
-
-  return (
-    <>
-      {count == 1 ? <>.</> : null}
-      {count == 2 ? <>..</> : null}
-      {count == 3 ? <>...</> : null}
-    </>
   );
 }

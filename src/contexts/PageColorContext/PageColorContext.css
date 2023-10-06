@@ -1,0 +1,89 @@
+.cover-color {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+}
+
+.fade-in-black-element {
+  display: block;
+  animation: fade-in-black 610ms;
+}
+
+@keyframes fade-in-black {
+  0% {
+    opacity: 0;
+    background: #444;
+  }
+  80% {
+    opacity: 1;
+    background: #444;
+  }
+  100% {
+    opacity: 1;
+    background: #444;
+  }
+}
+
+.fade-out-white-element {
+  display: block;
+  animation: fade-out-white 600ms;
+}
+
+@keyframes fade-out-white {
+  0% {
+    opacity: 1;
+    background: #444;
+  }
+  80% {
+    opacity: 0;
+    background: #444;
+  }
+  100% {
+    opacity: 0;
+    background: #444;
+  }
+}
+
+.fade-in-white-element {
+  display: block;
+  animation: fade-in-white 610ms;
+}
+
+@keyframes fade-in-white {
+  0% {
+    opacity: 0;
+    background: #444;
+  }
+  80% {
+    opacity: 1;
+    background: #444;
+  }
+  100% {
+    opacity: 1;
+    background: #444;
+  }
+}
+
+.fade-out-black-element {
+  display: block;
+  animation: fade-out-black 600ms;
+}
+
+@keyframes fade-out-black {
+  0% {
+    opacity: 1;
+    background: #444;
+  }
+  80% {
+    opacity: 0;
+    background: #444;
+  }
+  100% {
+    opacity: 0;
+    background: #444;
+  }
+}

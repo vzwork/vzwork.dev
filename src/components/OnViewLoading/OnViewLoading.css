@@ -1,0 +1,8 @@
+.element {
+  opacity: 1;
+  transition: ease-in 500ms;
+}
+
+.show {
+  opacity: 0;
+}
