@@ -38,6 +38,7 @@ export default function Navbar() {
     <Box
       sx={{
         position: "fixed",
+        zIndex: 4,
         top: "1rem",
         left: "50vw",
         transform: "translateX(-50%)",
