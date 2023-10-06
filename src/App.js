@@ -1,33 +1,94 @@
-import "./App.css";
+import { MouseContextProvider } from "./contexts/MouseContext/MouseContext";
+import { PageContextProvider } from "./contexts/PageContext/PageContext";
+import { ThemeContextProvider } from "./contexts/ThemeContext/ThemeContext";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Landing from "./pages/landing/Landing";
+import Error from "./pages/error/Error";
+import Agi from "./pages/agi/Agi";
+import Navbar from "./components/Navbar";
+import Cs from "./pages/cs/Cs";
+import { Box } from "@mui/material";
+import { PageColorContextProvider } from "./contexts/PageColorContext/PageColorContext";
+import De from "./pages/de/De";
+import Ds from "./pages/ds/Ds";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { PageLocationContextProvider } from "./contexts/PageLocationContext";
-import MyRouter from "./Router";
+const InBetween = (props) => {
+  return (
+    <>
+      {props.landing ? null : <Navbar />}
+      {/* <BrightnessMode /> */}
+      {/* <Sidenav /> */}
+      <Box sx={{ width: "100%", height: "100%", color: "text.main" }}>
+        <></>
+        {props.children}
+      </Box>
+    </>
+  );
+};
 
-const theme = createTheme({
-  palette: {
-    background: {
-      main: "rgba(50, 50, 55, 1)",
-      secondary: "rgba(50, 50, 55, 0.4)",
-    },
-    sidenav: {
-      bg: "rgba(200, 70, 60, 1)",
-      main: "#fff",
-    },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <InBetween landing={true}>
+        <Landing />
+      </InBetween>
+    ),
   },
-});
+  {
+    path: "/agi",
+    element: (
+      <InBetween>
+        <Agi />
+      </InBetween>
+    ),
+  },
+  {
+    path: "/de",
+    element: (
+      <InBetween>
+        <De />
+      </InBetween>
+    ),
+  },
+  {
+    path: "/cs",
+    element: (
+      <InBetween>
+        <Cs />
+      </InBetween>
+    ),
+  },
+  {
+    path: "/ds",
+    element: (
+      <InBetween>
+        <Ds />
+      </InBetween>
+    ),
+  },
+  {
+    path: "/*",
+    element: (
+      <InBetween>
+        <Error />
+      </InBetween>
+    ),
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-      <div className="bg">
-        <div className="slider-thumb" />
-      </div>
-      <ThemeProvider theme={theme}>
-        <PageLocationContextProvider>
-          <MyRouter />
-        </PageLocationContextProvider>
-      </ThemeProvider>
+      <PageColorContextProvider>
+        <ThemeContextProvider>
+          <PageContextProvider>
+            <MouseContextProvider>
+              <RouterProvider router={router} />
+            </MouseContextProvider>
+          </PageContextProvider>
+        </ThemeContextProvider>
+      </PageColorContextProvider>
     </div>
   );
 }

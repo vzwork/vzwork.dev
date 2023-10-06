@@ -1,0 +1,47 @@
+.scrollDownAnimation {
+  opacity: 0.3;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.notVisible {
+  opacity: 0;
+}
+
+.scrollDownAnimationOne {
+  position: absolute;
+  left: calc(50vw - 20px);
+  bottom: 0;
+  animation: moveUpDownOne 4s ease infinite;
+}
+
+.scrollDownAnimationTwo {
+  position: absolute;
+  left: calc(50vw - 20px);
+  bottom: 0;
+  animation: moveUpDownTwo 4s ease infinite;
+}
+
+@keyframes moveUpDownOne {
+  0%,
+  100% {
+    transform: translateY(-10px);
+  }
+  40%,
+  60% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes moveUpDownTwo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  10%,
+  90% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
