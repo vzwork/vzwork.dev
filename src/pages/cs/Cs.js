@@ -1,32 +1,58 @@
-import { Box, Button, Container } from "@mui/material";
-import LoadLetters from "../../components/LoadLetters";
+import {
+  Box,
+  Container,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { useEffect, useState } from "react";
-import OnViewLoading from "../../components/OnViewLoading/OnViewLoading";
 import PageNameAnimation from "../../components/PageNameAnimation";
 import ScrollDownAnimation from "../../components/ScrollDownAnimation/ScrollDownAnimation";
-import Post from "../../components/Post";
+import Post from "../../components/Post/Post";
 
 const timeline = [
   {
-    date: "08/20/2001",
-    text: "hello there very important person. thank you for reading this",
+    date: "10/01/2023",
+    objectives: [
+      "one good point",
+      "another good point",
+      "last excellent point",
+    ],
+    results: ["one good point", "another good point", "last excellent point"],
+    text: "And on a final note",
+    img: "./EasilyPollStudents.png",
+    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
   },
   {
-    date: "08/20/2001",
-    text: "hello there very important person. thank you for reading this",
+    date: "10/01/2023",
+    objectives: [
+      "one good point",
+      "another good point",
+      "last excellent point",
+    ],
+    results: ["one good point", "another good point", "last excellent point"],
+    text: "And on a final note",
+    img: "./EasilyPollStudents.png",
+    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
   },
   {
-    date: "08/20/2001",
-    text: "hello there very important person. thank you for reading this",
-  },
-  {
-    date: "08/20/2001",
-    text: "hello there very important person. thank you for reading this",
+    date: "10/01/2023",
+    objectives: [
+      "one good point",
+      "another good point",
+      "last excellent point",
+    ],
+    results: ["one good point", "another good point", "last excellent point"],
+    text: "And on a final note",
+    img: "./EasilyPollStudents.png",
+    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
   },
 ];
 
 export default function Cs() {
   const [readyToRender, setReadyToRender] = useState(false);
+  const [chronological, setChronological] = useState(false);
 
   useEffect(() => {
     if (!readyToRender) {
@@ -72,12 +98,36 @@ export default function Cs() {
           It is especially useful to get good at working with abstractions.
         </Box>
       </Box>
-      <Container>
-        {timeline.map((val, idx) => (
-          <Post props={val} key={idx} />
-        ))}
+      <Box height="2vh" />
+      <Container sx={{ display: "flex", justifyContent: "end" }}>
+        <FormControl sx={{ width: 150 }} size="small">
+          <InputLabel id="order">Order</InputLabel>
+          <Select
+            labelId="order"
+            id="selector-order"
+            value={chronological}
+            label="Order"
+            onChange={(e) => {
+              setChronological(e.target.value);
+            }}
+          >
+            <MenuItem value={false}>New First</MenuItem>
+            <MenuItem value={true}>Chronological</MenuItem>
+          </Select>
+        </FormControl>
       </Container>
-      <Box sx={{ height: "100vh" }} />
+      <Box mt={2} sx={{ textAlign: "center", fontSize: "0.8rem" }}>
+        press the image to inspect the project
+      </Box>
+      <Container>
+        {chronological
+          ? timeline
+              .slice(0)
+              .reverse()
+              .map((val, idx) => <Post props={val} key={idx} />)
+          : timeline.map((val, idx) => <Post props={val} key={idx} />)}
+      </Container>
+      <Box height="20vh" />
     </Box>
   );
 }

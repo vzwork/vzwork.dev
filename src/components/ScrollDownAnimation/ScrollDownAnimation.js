@@ -7,7 +7,7 @@ export default function ScrollDownAnimation() {
 
   useEffect(() => {
     const scrollUpdate = () => {
-      setVisible(window.scrollY === 0);
+      setVisible(window.scrollY < window.innerHeight * 0.3);
     };
     window.addEventListener("scroll", scrollUpdate);
     return () => {
