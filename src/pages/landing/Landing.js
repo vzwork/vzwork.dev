@@ -41,7 +41,7 @@ export default function Landing() {
               }}
             />
             <Box sx={{ fontSize: "1.2rem", padding: "2rem 0" }}>
-              Vladislav Zakharov
+              Vladislav Zakharov {themeContext.darkMode ? "🍕" : "🥑"}
             </Box>
           </Box>
         </Container>
@@ -58,6 +58,7 @@ export default function Landing() {
             color="secondary"
             onClick={async () => {
               await pageContext.animateIn();
+              window.scrollTo(0, 0);
               nav("/agi");
               await pageContext.animateOut();
             }}
@@ -71,6 +72,7 @@ export default function Landing() {
             color="secondary"
             onClick={async () => {
               await pageContext.animateIn();
+              window.scrollTo(0, 0);
               nav("/ds");
               await pageContext.animateOut();
             }}
@@ -84,6 +86,7 @@ export default function Landing() {
             color="secondary"
             onClick={async () => {
               await pageContext.animateIn();
+              window.scrollTo(0, 0);
               nav("/de");
               await pageContext.animateOut();
             }}
@@ -97,6 +100,7 @@ export default function Landing() {
             color="secondary"
             onClick={async () => {
               await pageContext.animateIn();
+              window.scrollTo(0, 0);
               nav("/cs");
               await pageContext.animateOut();
             }}
