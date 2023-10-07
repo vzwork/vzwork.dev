@@ -14,40 +14,37 @@ import Post from "../../components/Post/Post";
 
 const timeline = [
   {
-    date: "10/01/2023",
+    date: "08/21/2023",
     objectives: [
-      "one good point",
-      "another good point",
-      "last excellent point",
+      "Take input from user",
+      "Classify function family",
+      "Use linear regression to fit function",
     ],
-    results: ["one good point", "another good point", "last excellent point"],
-    text: "And on a final note",
-    img: "./EasilyPollStudents.png",
-    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
+    results: [
+      "All objectives were met",
+      "The quality can be improved",
+      "I didn't use diverse data generation process with polynomials",
+    ],
+    text: "Full-stack ML application",
+    img: "./agi/PredictMath.png",
+    href: "https://www.predict-math.web.app",
   },
   {
-    date: "10/01/2023",
+    date: "08/21/2023",
     objectives: [
-      "one good point",
-      "another good point",
-      "last excellent point",
+      "Humans are great at quick pattern recognition",
+      "But we also try to model change over time",
+      "I will explore polynomial functions generation",
+      "Explore trigonometric functions generation",
     ],
-    results: ["one good point", "another good point", "last excellent point"],
-    text: "And on a final note",
-    img: "./EasilyPollStudents.png",
-    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
-  },
-  {
-    date: "10/01/2023",
-    objectives: [
-      "one good point",
-      "another good point",
-      "last excellent point",
+    results: [
+      "Buitl a CV pipeline",
+      "Able to classify function family",
+      "Linear, Squared, Cubic, Trig",
     ],
-    results: ["one good point", "another good point", "last excellent point"],
-    text: "And on a final note",
-    img: "./EasilyPollStudents.png",
-    href: "http://easily-poll-students.s3-website-us-west-2.amazonaws.com",
+    text: "Compartmentalization of Pattern Recognition Process",
+    img: "./agi/NN_relation.png",
+    href: "https://github.com/vzwork/nn_relation/blob/main/predict_math.ipynb",
   },
 ];
 

@@ -41,7 +41,7 @@ export default function Landing() {
               }}
             />
             <Box sx={{ fontSize: "1.2rem", padding: "2rem 0" }}>
-              Vladislav Zakharov {themeContext.darkMode ? "🍕" : "🥑"}
+              Vladislav Zakharov
             </Box>
           </Box>
         </Container>
