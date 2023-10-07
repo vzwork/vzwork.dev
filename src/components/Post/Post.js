@@ -12,11 +12,11 @@ export default function Post({ props }) {
         const element = ref.current.getBoundingClientRect();
         let topMin =
           window.innerWidth > 500
-            ? window.innerHeight * 0.05
+            ? window.innerHeight * -0.2
             : window.innerHeight * -0.4;
         let botMax =
           window.innerWidth > 500
-            ? window.innerHeight * 0.95
+            ? window.innerHeight * 1.2
             : window.innerHeight * 1.4;
         setIsVisible(element.top >= topMin && element.bottom <= botMax);
       }
@@ -59,15 +59,10 @@ export default function Post({ props }) {
             borderRadius="2rem"
             overflow="hidden"
             className="image-container"
+            height={160}
           >
             <a href={props.href}>
-              <img
-                src={props.img}
-                alt={props.img}
-                width="260"
-                height="160"
-                style={{ objectFit: "cover" }}
-              />
+              <img src={props.img} alt={props.img} width="260" height="160" />
             </a>
           </Box>
         ) : null}
