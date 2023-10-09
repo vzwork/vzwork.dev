@@ -45,7 +45,17 @@ export default function Landing() {
             </Box>
           </Box>
         </Container>
-
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "1rem",
+            textAlign: "center",
+          }}
+        >
+          Recent grad with a 1 yoe in SWE. <br />
+          Enthusiastic about sleek engineering and machine learning solutions.
+        </Box>
         <Box
           sx={{ display: "flex", justifyContent: "center", padding: "1rem" }}
         >
