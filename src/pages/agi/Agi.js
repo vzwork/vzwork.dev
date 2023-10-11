@@ -27,7 +27,7 @@ const timeline = [
     ],
     text: "Full-stack ML application",
     img: "./agi/PredictMath.png",
-    href: "https://www.predict-math.web.app",
+    href: "https://predict-math.web.app",
   },
   {
     date: "08/21/2023",
